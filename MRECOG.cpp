@@ -280,14 +280,14 @@ int MRECOG::AFaceProcess_GetfaceFeature(cv::Mat& face, AFeature &feature)
 	resize(face, face, cvSize(128, 128));
 	face.convertTo(face, CV_32FC1, 1.0 / 255.0);
 
-	//double start = cv::getTickCount();
-	//for (int i = 0; i < 1000;)
-	//{
-	//	i++;
-	//	fe->extractfeature(face, feature.feature);
-	//}
-	//double extractf_cost = (cv::getTickCount() - start) / cv::getTickFrequency();
-	//cout << "ave extract cost " << extractf_cost / 1000.0 << endl;
+	double start = cv::getTickCount();
+	for (int i = 0; i < 1000;)
+	{
+		i++;
+		fe->extractfeature(face, feature.feature);
+	}
+	double extractf_cost = (cv::getTickCount() - start) / cv::getTickFrequency();
+	cout << "ave extract cost " << extractf_cost / 1000.0 << endl;
 
 	fe->extractfeature(face, feature.feature);
 

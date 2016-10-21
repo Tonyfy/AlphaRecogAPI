@@ -1,11 +1,22 @@
 project(FV)
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 2.8)
 
 find_package(OpenCV REQUIRED)
-include(mini-caffe/mini-caffe.cmake)
 
-set(BOOST_DIR $ENV{BOOST_DIR})
-SET(CMAKE_LIBRARY_PATH ${BOOST_DIR}/stage/lib)
+# add c++11 flags for gcc
+if (CMAKE_COMPILER_IS_GNUCXX)
+    set(ENABLE_CXX11 "-std=c++11")
+    if (GCC_VERSION VERSION_LESS 4.7)
+        set(ENABLE_CXX11 "-std=c++0x")
+    endif()
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ENABLE_CXX11}")
+endif()
+
+set(CAFFE_ROOT "/home/zhaofei/caffe")
+include_directories(${CAFFE_ROOT}/include)
+set(CAFFE_LIB ${CAFFE_ROOT}/build/lib/libcaffe.so)
+add_definitions(-DCPU_ONLY)
+add_definitions(-DUSE_OPENCV)
 
 file(GLOB HEADERS *.h*)
 file(GLOB SOURCES *.c*)
@@ -13,4 +24,4 @@ set(ALL_FILES ${HEADERS} ${SOURCES})
 
 add_executable(${PROJECT_NAME} ${ALL_FILES})
 
-target_link_libraries(${PROJECT_NAME} libcaffe ${OpenCV_LIBS} ${Boost_LIBS})
+target_link_libraries(${PROJECT_NAME} glog ${CAFFE_LIB} ${OpenCV_LIBS})

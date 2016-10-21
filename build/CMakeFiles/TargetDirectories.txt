@@ -1,4 +1,1 @@
-D:/SEAL/AlphaRecogAPI/build/CMakeFiles/libcaffe.dir
-D:/SEAL/AlphaRecogAPI/build/CMakeFiles/FV.dir
-D:/SEAL/AlphaRecogAPI/build/CMakeFiles/ALL_BUILD.dir
-D:/SEAL/AlphaRecogAPI/build/CMakeFiles/ZERO_CHECK.dir
+/home/zhaofei/hack/AlphaRecogAPI/build/CMakeFiles/FV.dir

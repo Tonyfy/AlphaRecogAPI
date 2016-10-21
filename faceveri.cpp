@@ -1,3 +1,12 @@
+/*
+feature: test face verification ,
+read two face image and extract the two face feature,
+then verified whether they are the same.
+
+by tony.
+time: 2016Äê9ÔÂ13ÈÕ 16:37:41
+*/
+
 #include <cassert>
 #include <caffe/caffe.hpp>
 #include "featureExByCaffe.h"
@@ -22,7 +31,7 @@ int main()
 	
 
 	//r->getnormface("D:/work/LCNN_TRAIN/tools/code_point/image");
-	r->getnormface("C:\\Users\\yufei.zf\\Desktop");
+	///r->getnormface("C:\\Users\\yufei.zf\\Desktop");
 
 	string Apicpath = "../imgs/ym1.jpg";
 	string Bpicpath = "../imgs/ym2.jpg";
@@ -77,7 +86,7 @@ int main()
 
 	r->AFaceProcess_GetFaceFeature(Apic, frlA[0], Af);
 
-	cout << Af.feature;
+	//cout << Af.feature << endl;
 
 	r->AFaceProcess_GetFaceFeature(Bpic, frlB[0], Bf);
 	double simAB = 0.0;
